@@ -1,0 +1,856 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MalinowskyCarRentalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bazy">
+          <Key>
+            <PropertyRef Name="id_bazy" />
+          </Key>
+          <Property Name="id_bazy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pracownika" Type="int" />
+          <Property Name="kraj" Type="char" MaxLength="50" />
+          <Property Name="miasto" Type="char" MaxLength="50" />
+          <Property Name="ulica" Type="char" MaxLength="60" />
+          <Property Name="numer_domu" Type="char" MaxLength="6" />
+          <Property Name="numer_lokalu" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="Klienci">
+          <Key>
+            <PropertyRef Name="id_klienta" />
+          </Key>
+          <Property Name="id_klienta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pesel" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="imie" Type="char" MaxLength="30" />
+          <Property Name="nazwisko" Type="char" MaxLength="50" />
+          <Property Name="data_urodzenia" Type="date" />
+          <Property Name="nr_telefonu" Type="char" MaxLength="15" />
+          <Property Name="kraj" Type="char" MaxLength="50" />
+          <Property Name="miasto" Type="char" MaxLength="50" />
+          <Property Name="ulica" Type="char" MaxLength="60" />
+          <Property Name="numer_domu" Type="char" MaxLength="6" />
+          <Property Name="numer_lokalu" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="Modele samochodow">
+          <Key>
+            <PropertyRef Name="id_modelu" />
+          </Key>
+          <Property Name="id_modelu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="marka" Type="char" MaxLength="30" />
+          <Property Name="model" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Pracownicy">
+          <Key>
+            <PropertyRef Name="id_pracownika" />
+          </Key>
+          <Property Name="id_pracownika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_bazy" Type="int" />
+          <Property Name="pesel" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="imie" Type="char" MaxLength="30" />
+          <Property Name="nazwisko" Type="char" MaxLength="50" />
+          <Property Name="data_urodzenia" Type="date" />
+          <Property Name="nr_telefonu" Type="char" MaxLength="15" />
+          <Property Name="data_zatrudnienia" Type="date" />
+          <Property Name="stanowisko" Type="char" MaxLength="50" />
+          <Property Name="stawka_godzinowa" Type="smallint" />
+          <Property Name="kraj" Type="char" MaxLength="50" />
+          <Property Name="miasto" Type="char" MaxLength="50" />
+          <Property Name="ulica" Type="char" MaxLength="60" />
+          <Property Name="numer_domu" Type="char" MaxLength="6" />
+          <Property Name="numer_lokalu" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="Rodzaje paliwa">
+          <Key>
+            <PropertyRef Name="id_rodzaju_paliwa" />
+          </Key>
+          <Property Name="id_rodzaju_paliwa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rodzaj_paliwa" Type="char" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Samochody">
+          <Key>
+            <PropertyRef Name="id_samochodu" />
+          </Key>
+          <Property Name="id_samochodu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_typu" Type="int" />
+          <Property Name="id_bazy" Type="int" />
+          <Property Name="id_stanu_samochodu" Type="int" />
+          <Property Name="vin" Type="char" MaxLength="17" Nullable="false" />
+          <Property Name="przebieg" Type="int" />
+          <Property Name="cena_za_dzien" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Stany samochodu">
+          <Key>
+            <PropertyRef Name="id_stanu_samochodu" />
+          </Key>
+          <Property Name="id_stanu_samochodu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stan_samochodu" Type="char" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Typy nadwozia">
+          <Key>
+            <PropertyRef Name="id_typu_nadwozia" />
+          </Key>
+          <Property Name="id_typu_nadwozia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typ_nadwozia" Type="char" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Typy samochodow">
+          <Key>
+            <PropertyRef Name="id_typu" />
+          </Key>
+          <Property Name="id_typu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_wersji" Type="int" />
+          <Property Name="rok_produkcji" Type="smallint" />
+          <Property Name="kolor" Type="char" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Wersje modeli">
+          <Key>
+            <PropertyRef Name="id_wersji" />
+          </Key>
+          <Property Name="id_wersji" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_modelu" Type="int" />
+          <Property Name="id_paliwa" Type="int" />
+          <Property Name="id_typu_nadwozia" Type="int" />
+          <Property Name="moc_kw" Type="smallint" />
+          <Property Name="pojemnosc_silnika" Type="smallint" />
+          <Property Name="liczba_miejsc" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Wypozyczenia">
+          <Key>
+            <PropertyRef Name="id_wypozyczenia" />
+          </Key>
+          <Property Name="id_wypozyczenia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_klienta" Type="int" />
+          <Property Name="id_pracownika" Type="int" />
+          <Property Name="id_samochodu" Type="int" />
+          <Property Name="data_wypozyczenia" Type="date" Nullable="false" />
+          <Property Name="planowana_data_zwrotu" Type="date" Nullable="false" />
+          <Property Name="data_zwrotu" Type="date" />
+          <Property Name="oplata_dodatkowa" Type="int" />
+        </EntityType>
+        <Association Name="ref_Bazy_id_pracownika">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+          <End Role="Bazy" Type="Self.Bazy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="id_pracownika" />
+            </Principal>
+            <Dependent Role="Bazy">
+              <PropertyRef Name="id_pracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Pracownicy_id_bazy">
+          <End Role="Bazy" Type="Self.Bazy" Multiplicity="0..1" />
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bazy">
+              <PropertyRef Name="id_bazy" />
+            </Principal>
+            <Dependent Role="Pracownicy">
+              <PropertyRef Name="id_bazy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Samochody_id_bazy">
+          <End Role="Bazy" Type="Self.Bazy" Multiplicity="0..1" />
+          <End Role="Samochody" Type="Self.Samochody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bazy">
+              <PropertyRef Name="id_bazy" />
+            </Principal>
+            <Dependent Role="Samochody">
+              <PropertyRef Name="id_bazy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Samochody_id_stanu_samochodu">
+          <End Role="Stany samochodu" Type="Self.Stany samochodu" Multiplicity="0..1" />
+          <End Role="Samochody" Type="Self.Samochody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stany samochodu">
+              <PropertyRef Name="id_stanu_samochodu" />
+            </Principal>
+            <Dependent Role="Samochody">
+              <PropertyRef Name="id_stanu_samochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Samochody_id_typu">
+          <End Role="Typy samochodow" Type="Self.Typy samochodow" Multiplicity="0..1" />
+          <End Role="Samochody" Type="Self.Samochody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Typy samochodow">
+              <PropertyRef Name="id_typu" />
+            </Principal>
+            <Dependent Role="Samochody">
+              <PropertyRef Name="id_typu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Typy_id_wersji">
+          <End Role="Wersje modeli" Type="Self.Wersje modeli" Multiplicity="0..1" />
+          <End Role="Typy samochodow" Type="Self.Typy samochodow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wersje modeli">
+              <PropertyRef Name="id_wersji" />
+            </Principal>
+            <Dependent Role="Typy samochodow">
+              <PropertyRef Name="id_wersji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Wersje_id_modelu">
+          <End Role="Modele samochodow" Type="Self.Modele samochodow" Multiplicity="0..1" />
+          <End Role="Wersje modeli" Type="Self.Wersje modeli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modele samochodow">
+              <PropertyRef Name="id_modelu" />
+            </Principal>
+            <Dependent Role="Wersje modeli">
+              <PropertyRef Name="id_modelu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Wersje_id_paliwa">
+          <End Role="Rodzaje paliwa" Type="Self.Rodzaje paliwa" Multiplicity="0..1" />
+          <End Role="Wersje modeli" Type="Self.Wersje modeli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rodzaje paliwa">
+              <PropertyRef Name="id_rodzaju_paliwa" />
+            </Principal>
+            <Dependent Role="Wersje modeli">
+              <PropertyRef Name="id_paliwa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Wersje_id_typu_nadwozia">
+          <End Role="Typy nadwozia" Type="Self.Typy nadwozia" Multiplicity="0..1" />
+          <End Role="Wersje modeli" Type="Self.Wersje modeli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Typy nadwozia">
+              <PropertyRef Name="id_typu_nadwozia" />
+            </Principal>
+            <Dependent Role="Wersje modeli">
+              <PropertyRef Name="id_typu_nadwozia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Wypozyczenia_id_klienta">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="0..1" />
+          <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="id_klienta" />
+            </Principal>
+            <Dependent Role="Wypozyczenia">
+              <PropertyRef Name="id_klienta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Wypozyczenia_id_pracownika">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+          <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="id_pracownika" />
+            </Principal>
+            <Dependent Role="Wypozyczenia">
+              <PropertyRef Name="id_pracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Wypozyczenia_id_samochodu">
+          <End Role="Samochody" Type="Self.Samochody" Multiplicity="0..1" />
+          <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochody">
+              <PropertyRef Name="id_samochodu" />
+            </Principal>
+            <Dependent Role="Wypozyczenia">
+              <PropertyRef Name="id_samochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MalinowskyCarRentalModelStoreContainer">
+          <EntitySet Name="Bazy" EntityType="Self.Bazy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klienci" EntityType="Self.Klienci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modele samochodow" EntityType="Self.Modele samochodow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rodzaje paliwa" EntityType="Self.Rodzaje paliwa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Samochody" EntityType="Self.Samochody" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stany samochodu" EntityType="Self.Stany samochodu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Typy nadwozia" EntityType="Self.Typy nadwozia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Typy samochodow" EntityType="Self.Typy samochodow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wersje modeli" EntityType="Self.Wersje modeli" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wypozyczenia" EntityType="Self.Wypozyczenia" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="ref_Bazy_id_pracownika" Association="Self.ref_Bazy_id_pracownika">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Bazy" EntitySet="Bazy" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Pracownicy_id_bazy" Association="Self.ref_Pracownicy_id_bazy">
+            <End Role="Bazy" EntitySet="Bazy" />
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Samochody_id_bazy" Association="Self.ref_Samochody_id_bazy">
+            <End Role="Bazy" EntitySet="Bazy" />
+            <End Role="Samochody" EntitySet="Samochody" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Samochody_id_stanu_samochodu" Association="Self.ref_Samochody_id_stanu_samochodu">
+            <End Role="Stany samochodu" EntitySet="Stany samochodu" />
+            <End Role="Samochody" EntitySet="Samochody" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Samochody_id_typu" Association="Self.ref_Samochody_id_typu">
+            <End Role="Typy samochodow" EntitySet="Typy samochodow" />
+            <End Role="Samochody" EntitySet="Samochody" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Typy_id_wersji" Association="Self.ref_Typy_id_wersji">
+            <End Role="Wersje modeli" EntitySet="Wersje modeli" />
+            <End Role="Typy samochodow" EntitySet="Typy samochodow" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Wersje_id_modelu" Association="Self.ref_Wersje_id_modelu">
+            <End Role="Modele samochodow" EntitySet="Modele samochodow" />
+            <End Role="Wersje modeli" EntitySet="Wersje modeli" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Wersje_id_paliwa" Association="Self.ref_Wersje_id_paliwa">
+            <End Role="Rodzaje paliwa" EntitySet="Rodzaje paliwa" />
+            <End Role="Wersje modeli" EntitySet="Wersje modeli" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Wersje_id_typu_nadwozia" Association="Self.ref_Wersje_id_typu_nadwozia">
+            <End Role="Typy nadwozia" EntitySet="Typy nadwozia" />
+            <End Role="Wersje modeli" EntitySet="Wersje modeli" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Wypozyczenia_id_klienta" Association="Self.ref_Wypozyczenia_id_klienta">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Wypozyczenia_id_pracownika" Association="Self.ref_Wypozyczenia_id_pracownika">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Wypozyczenia_id_samochodu" Association="Self.ref_Wypozyczenia_id_samochodu">
+            <End Role="Samochody" EntitySet="Samochody" />
+            <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MalinowskyCarRentalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bazy">
+          <Key>
+            <PropertyRef Name="id_bazy" />
+          </Key>
+          <Property Name="id_bazy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pracownika" Type="Int32" />
+          <Property Name="kraj" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="miasto" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="ulica" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="numer_domu" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="numer_lokalu" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Pracownicy" Relationship="Self.ref_Bazy_id_pracownika" FromRole="Bazy" ToRole="Pracownicy" />
+          <NavigationProperty Name="Pracownicy1" Relationship="Self.ref_Pracownicy_id_bazy" FromRole="Bazy" ToRole="Pracownicy" />
+          <NavigationProperty Name="Samochody" Relationship="Self.ref_Samochody_id_bazy" FromRole="Bazy" ToRole="Samochody" />
+        </EntityType>
+        <EntityType Name="Klienci">
+          <Key>
+            <PropertyRef Name="id_klienta" />
+          </Key>
+          <Property Name="id_klienta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pesel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="imie" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="data_urodzenia" Type="DateTime" Precision="0" />
+          <Property Name="nr_telefonu" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="kraj" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="miasto" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="ulica" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="numer_domu" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="numer_lokalu" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Wypozyczenia" Relationship="Self.ref_Wypozyczenia_id_klienta" FromRole="Klienci" ToRole="Wypozyczenia" />
+        </EntityType>
+        <EntityType Name="Modele_samochodow">
+          <Key>
+            <PropertyRef Name="id_modelu" />
+          </Key>
+          <Property Name="id_modelu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="marka" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Wersje_modeli" Relationship="Self.ref_Wersje_id_modelu" FromRole="Modele_samochodow" ToRole="Wersje_modeli" />
+        </EntityType>
+        <EntityType Name="Pracownicy">
+          <Key>
+            <PropertyRef Name="id_pracownika" />
+          </Key>
+          <Property Name="id_pracownika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_bazy" Type="Int32" />
+          <Property Name="pesel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="imie" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="data_urodzenia" Type="DateTime" Precision="0" />
+          <Property Name="nr_telefonu" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="data_zatrudnienia" Type="DateTime" Precision="0" />
+          <Property Name="stanowisko" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="stawka_godzinowa" Type="Int16" />
+          <Property Name="kraj" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="miasto" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="ulica" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="numer_domu" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="numer_lokalu" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Bazy" Relationship="Self.ref_Bazy_id_pracownika" FromRole="Pracownicy" ToRole="Bazy" />
+          <NavigationProperty Name="Bazy1" Relationship="Self.ref_Pracownicy_id_bazy" FromRole="Pracownicy" ToRole="Bazy" />
+          <NavigationProperty Name="Wypozyczenia" Relationship="Self.ref_Wypozyczenia_id_pracownika" FromRole="Pracownicy" ToRole="Wypozyczenia" />
+        </EntityType>
+        <EntityType Name="Rodzaje_paliwa">
+          <Key>
+            <PropertyRef Name="id_rodzaju_paliwa" />
+          </Key>
+          <Property Name="id_rodzaju_paliwa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rodzaj_paliwa" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Wersje_modeli" Relationship="Self.ref_Wersje_id_paliwa" FromRole="Rodzaje_paliwa" ToRole="Wersje_modeli" />
+        </EntityType>
+        <EntityType Name="Samochody">
+          <Key>
+            <PropertyRef Name="id_samochodu" />
+          </Key>
+          <Property Name="id_samochodu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_typu" Type="Int32" />
+          <Property Name="id_bazy" Type="Int32" />
+          <Property Name="id_stanu_samochodu" Type="Int32" />
+          <Property Name="vin" Type="String" MaxLength="17" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="przebieg" Type="Int32" />
+          <Property Name="cena_za_dzien" Type="Int16" />
+          <NavigationProperty Name="Bazy" Relationship="Self.ref_Samochody_id_bazy" FromRole="Samochody" ToRole="Bazy" />
+          <NavigationProperty Name="Stany_samochodu" Relationship="Self.ref_Samochody_id_stanu_samochodu" FromRole="Samochody" ToRole="Stany_samochodu" />
+          <NavigationProperty Name="Typy_samochodow" Relationship="Self.ref_Samochody_id_typu" FromRole="Samochody" ToRole="Typy_samochodow" />
+          <NavigationProperty Name="Wypozyczenia" Relationship="Self.ref_Wypozyczenia_id_samochodu" FromRole="Samochody" ToRole="Wypozyczenia" />
+        </EntityType>
+        <EntityType Name="Stany_samochodu">
+          <Key>
+            <PropertyRef Name="id_stanu_samochodu" />
+          </Key>
+          <Property Name="id_stanu_samochodu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stan_samochodu" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Samochody" Relationship="Self.ref_Samochody_id_stanu_samochodu" FromRole="Stany_samochodu" ToRole="Samochody" />
+        </EntityType>
+        <EntityType Name="Typy_nadwozia">
+          <Key>
+            <PropertyRef Name="id_typu_nadwozia" />
+          </Key>
+          <Property Name="id_typu_nadwozia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typ_nadwozia" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Wersje_modeli" Relationship="Self.ref_Wersje_id_typu_nadwozia" FromRole="Typy_nadwozia" ToRole="Wersje_modeli" />
+        </EntityType>
+        <EntityType Name="Typy_samochodow">
+          <Key>
+            <PropertyRef Name="id_typu" />
+          </Key>
+          <Property Name="id_typu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_wersji" Type="Int32" />
+          <Property Name="rok_produkcji" Type="Int16" />
+          <Property Name="kolor" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Samochody" Relationship="Self.ref_Samochody_id_typu" FromRole="Typy_samochodow" ToRole="Samochody" />
+          <NavigationProperty Name="Wersje_modeli" Relationship="Self.ref_Typy_id_wersji" FromRole="Typy_samochodow" ToRole="Wersje_modeli" />
+        </EntityType>
+        <EntityType Name="Wersje_modeli">
+          <Key>
+            <PropertyRef Name="id_wersji" />
+          </Key>
+          <Property Name="id_wersji" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_modelu" Type="Int32" />
+          <Property Name="id_paliwa" Type="Int32" />
+          <Property Name="id_typu_nadwozia" Type="Int32" />
+          <Property Name="moc_kw" Type="Int16" />
+          <Property Name="pojemnosc_silnika" Type="Int16" />
+          <Property Name="liczba_miejsc" Type="Byte" />
+          <NavigationProperty Name="Modele_samochodow" Relationship="Self.ref_Wersje_id_modelu" FromRole="Wersje_modeli" ToRole="Modele_samochodow" />
+          <NavigationProperty Name="Rodzaje_paliwa" Relationship="Self.ref_Wersje_id_paliwa" FromRole="Wersje_modeli" ToRole="Rodzaje_paliwa" />
+          <NavigationProperty Name="Typy_nadwozia" Relationship="Self.ref_Wersje_id_typu_nadwozia" FromRole="Wersje_modeli" ToRole="Typy_nadwozia" />
+          <NavigationProperty Name="Typy_samochodow" Relationship="Self.ref_Typy_id_wersji" FromRole="Wersje_modeli" ToRole="Typy_samochodow" />
+        </EntityType>
+        <EntityType Name="Wypozyczenia">
+          <Key>
+            <PropertyRef Name="id_wypozyczenia" />
+          </Key>
+          <Property Name="id_wypozyczenia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_klienta" Type="Int32" />
+          <Property Name="id_pracownika" Type="Int32" />
+          <Property Name="id_samochodu" Type="Int32" />
+          <Property Name="data_wypozyczenia" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="planowana_data_zwrotu" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="data_zwrotu" Type="DateTime" Precision="0" />
+          <Property Name="oplata_dodatkowa" Type="Int32" />
+          <NavigationProperty Name="Klienci" Relationship="Self.ref_Wypozyczenia_id_klienta" FromRole="Wypozyczenia" ToRole="Klienci" />
+          <NavigationProperty Name="Pracownicy" Relationship="Self.ref_Wypozyczenia_id_pracownika" FromRole="Wypozyczenia" ToRole="Pracownicy" />
+          <NavigationProperty Name="Samochody" Relationship="Self.ref_Wypozyczenia_id_samochodu" FromRole="Wypozyczenia" ToRole="Samochody" />
+        </EntityType>
+        <Association Name="ref_Bazy_id_pracownika">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+          <End Role="Bazy" Type="Self.Bazy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="id_pracownika" />
+            </Principal>
+            <Dependent Role="Bazy">
+              <PropertyRef Name="id_pracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Pracownicy_id_bazy">
+          <End Role="Bazy" Type="Self.Bazy" Multiplicity="0..1" />
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bazy">
+              <PropertyRef Name="id_bazy" />
+            </Principal>
+            <Dependent Role="Pracownicy">
+              <PropertyRef Name="id_bazy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Samochody_id_bazy">
+          <End Role="Bazy" Type="Self.Bazy" Multiplicity="0..1" />
+          <End Role="Samochody" Type="Self.Samochody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bazy">
+              <PropertyRef Name="id_bazy" />
+            </Principal>
+            <Dependent Role="Samochody">
+              <PropertyRef Name="id_bazy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Wypozyczenia_id_klienta">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="0..1" />
+          <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="id_klienta" />
+            </Principal>
+            <Dependent Role="Wypozyczenia">
+              <PropertyRef Name="id_klienta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Wersje_id_modelu">
+          <End Role="Modele_samochodow" Type="Self.Modele_samochodow" Multiplicity="0..1" />
+          <End Role="Wersje_modeli" Type="Self.Wersje_modeli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modele_samochodow">
+              <PropertyRef Name="id_modelu" />
+            </Principal>
+            <Dependent Role="Wersje_modeli">
+              <PropertyRef Name="id_modelu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Wypozyczenia_id_pracownika">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+          <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="id_pracownika" />
+            </Principal>
+            <Dependent Role="Wypozyczenia">
+              <PropertyRef Name="id_pracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Wersje_id_paliwa">
+          <End Role="Rodzaje_paliwa" Type="Self.Rodzaje_paliwa" Multiplicity="0..1" />
+          <End Role="Wersje_modeli" Type="Self.Wersje_modeli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rodzaje_paliwa">
+              <PropertyRef Name="id_rodzaju_paliwa" />
+            </Principal>
+            <Dependent Role="Wersje_modeli">
+              <PropertyRef Name="id_paliwa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Samochody_id_stanu_samochodu">
+          <End Role="Stany_samochodu" Type="Self.Stany_samochodu" Multiplicity="0..1" />
+          <End Role="Samochody" Type="Self.Samochody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stany_samochodu">
+              <PropertyRef Name="id_stanu_samochodu" />
+            </Principal>
+            <Dependent Role="Samochody">
+              <PropertyRef Name="id_stanu_samochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Samochody_id_typu">
+          <End Role="Typy_samochodow" Type="Self.Typy_samochodow" Multiplicity="0..1" />
+          <End Role="Samochody" Type="Self.Samochody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Typy_samochodow">
+              <PropertyRef Name="id_typu" />
+            </Principal>
+            <Dependent Role="Samochody">
+              <PropertyRef Name="id_typu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Wypozyczenia_id_samochodu">
+          <End Role="Samochody" Type="Self.Samochody" Multiplicity="0..1" />
+          <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochody">
+              <PropertyRef Name="id_samochodu" />
+            </Principal>
+            <Dependent Role="Wypozyczenia">
+              <PropertyRef Name="id_samochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Wersje_id_typu_nadwozia">
+          <End Role="Typy_nadwozia" Type="Self.Typy_nadwozia" Multiplicity="0..1" />
+          <End Role="Wersje_modeli" Type="Self.Wersje_modeli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Typy_nadwozia">
+              <PropertyRef Name="id_typu_nadwozia" />
+            </Principal>
+            <Dependent Role="Wersje_modeli">
+              <PropertyRef Name="id_typu_nadwozia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ref_Typy_id_wersji">
+          <End Role="Wersje_modeli" Type="Self.Wersje_modeli" Multiplicity="0..1" />
+          <End Role="Typy_samochodow" Type="Self.Typy_samochodow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wersje_modeli">
+              <PropertyRef Name="id_wersji" />
+            </Principal>
+            <Dependent Role="Typy_samochodow">
+              <PropertyRef Name="id_wersji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MalinowskyCarRentalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bazy" EntityType="Self.Bazy" />
+          <EntitySet Name="Klienci" EntityType="Self.Klienci" />
+          <EntitySet Name="Modele_samochodow" EntityType="Self.Modele_samochodow" />
+          <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" />
+          <EntitySet Name="Rodzaje_paliwa" EntityType="Self.Rodzaje_paliwa" />
+          <EntitySet Name="Samochody" EntityType="Self.Samochody" />
+          <EntitySet Name="Stany_samochodu" EntityType="Self.Stany_samochodu" />
+          <EntitySet Name="Typy_nadwozia" EntityType="Self.Typy_nadwozia" />
+          <EntitySet Name="Typy_samochodow" EntityType="Self.Typy_samochodow" />
+          <EntitySet Name="Wersje_modeli" EntityType="Self.Wersje_modeli" />
+          <EntitySet Name="Wypozyczenia" EntityType="Self.Wypozyczenia" />
+          <AssociationSet Name="ref_Bazy_id_pracownika" Association="Self.ref_Bazy_id_pracownika">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Bazy" EntitySet="Bazy" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Pracownicy_id_bazy" Association="Self.ref_Pracownicy_id_bazy">
+            <End Role="Bazy" EntitySet="Bazy" />
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Samochody_id_bazy" Association="Self.ref_Samochody_id_bazy">
+            <End Role="Bazy" EntitySet="Bazy" />
+            <End Role="Samochody" EntitySet="Samochody" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Wypozyczenia_id_klienta" Association="Self.ref_Wypozyczenia_id_klienta">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Wersje_id_modelu" Association="Self.ref_Wersje_id_modelu">
+            <End Role="Modele_samochodow" EntitySet="Modele_samochodow" />
+            <End Role="Wersje_modeli" EntitySet="Wersje_modeli" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Wypozyczenia_id_pracownika" Association="Self.ref_Wypozyczenia_id_pracownika">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Wersje_id_paliwa" Association="Self.ref_Wersje_id_paliwa">
+            <End Role="Rodzaje_paliwa" EntitySet="Rodzaje_paliwa" />
+            <End Role="Wersje_modeli" EntitySet="Wersje_modeli" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Samochody_id_stanu_samochodu" Association="Self.ref_Samochody_id_stanu_samochodu">
+            <End Role="Stany_samochodu" EntitySet="Stany_samochodu" />
+            <End Role="Samochody" EntitySet="Samochody" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Samochody_id_typu" Association="Self.ref_Samochody_id_typu">
+            <End Role="Typy_samochodow" EntitySet="Typy_samochodow" />
+            <End Role="Samochody" EntitySet="Samochody" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Wypozyczenia_id_samochodu" Association="Self.ref_Wypozyczenia_id_samochodu">
+            <End Role="Samochody" EntitySet="Samochody" />
+            <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Wersje_id_typu_nadwozia" Association="Self.ref_Wersje_id_typu_nadwozia">
+            <End Role="Typy_nadwozia" EntitySet="Typy_nadwozia" />
+            <End Role="Wersje_modeli" EntitySet="Wersje_modeli" />
+          </AssociationSet>
+          <AssociationSet Name="ref_Typy_id_wersji" Association="Self.ref_Typy_id_wersji">
+            <End Role="Wersje_modeli" EntitySet="Wersje_modeli" />
+            <End Role="Typy_samochodow" EntitySet="Typy_samochodow" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MalinowskyCarRentalModelStoreContainer" CdmEntityContainer="MalinowskyCarRentalEntities">
+          <EntitySetMapping Name="Bazy">
+            <EntityTypeMapping TypeName="MalinowskyCarRentalModel.Bazy">
+              <MappingFragment StoreEntitySet="Bazy">
+                <ScalarProperty Name="id_bazy" ColumnName="id_bazy" />
+                <ScalarProperty Name="id_pracownika" ColumnName="id_pracownika" />
+                <ScalarProperty Name="kraj" ColumnName="kraj" />
+                <ScalarProperty Name="miasto" ColumnName="miasto" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+                <ScalarProperty Name="numer_domu" ColumnName="numer_domu" />
+                <ScalarProperty Name="numer_lokalu" ColumnName="numer_lokalu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klienci">
+            <EntityTypeMapping TypeName="MalinowskyCarRentalModel.Klienci">
+              <MappingFragment StoreEntitySet="Klienci">
+                <ScalarProperty Name="id_klienta" ColumnName="id_klienta" />
+                <ScalarProperty Name="pesel" ColumnName="pesel" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="data_urodzenia" ColumnName="data_urodzenia" />
+                <ScalarProperty Name="nr_telefonu" ColumnName="nr_telefonu" />
+                <ScalarProperty Name="kraj" ColumnName="kraj" />
+                <ScalarProperty Name="miasto" ColumnName="miasto" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+                <ScalarProperty Name="numer_domu" ColumnName="numer_domu" />
+                <ScalarProperty Name="numer_lokalu" ColumnName="numer_lokalu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modele_samochodow">
+            <EntityTypeMapping TypeName="MalinowskyCarRentalModel.Modele_samochodow">
+              <MappingFragment StoreEntitySet="Modele samochodow">
+                <ScalarProperty Name="id_modelu" ColumnName="id_modelu" />
+                <ScalarProperty Name="marka" ColumnName="marka" />
+                <ScalarProperty Name="model" ColumnName="model" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pracownicy">
+            <EntityTypeMapping TypeName="MalinowskyCarRentalModel.Pracownicy">
+              <MappingFragment StoreEntitySet="Pracownicy">
+                <ScalarProperty Name="id_pracownika" ColumnName="id_pracownika" />
+                <ScalarProperty Name="id_bazy" ColumnName="id_bazy" />
+                <ScalarProperty Name="pesel" ColumnName="pesel" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="data_urodzenia" ColumnName="data_urodzenia" />
+                <ScalarProperty Name="nr_telefonu" ColumnName="nr_telefonu" />
+                <ScalarProperty Name="data_zatrudnienia" ColumnName="data_zatrudnienia" />
+                <ScalarProperty Name="stanowisko" ColumnName="stanowisko" />
+                <ScalarProperty Name="stawka_godzinowa" ColumnName="stawka_godzinowa" />
+                <ScalarProperty Name="kraj" ColumnName="kraj" />
+                <ScalarProperty Name="miasto" ColumnName="miasto" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+                <ScalarProperty Name="numer_domu" ColumnName="numer_domu" />
+                <ScalarProperty Name="numer_lokalu" ColumnName="numer_lokalu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rodzaje_paliwa">
+            <EntityTypeMapping TypeName="MalinowskyCarRentalModel.Rodzaje_paliwa">
+              <MappingFragment StoreEntitySet="Rodzaje paliwa">
+                <ScalarProperty Name="id_rodzaju_paliwa" ColumnName="id_rodzaju_paliwa" />
+                <ScalarProperty Name="rodzaj_paliwa" ColumnName="rodzaj_paliwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Samochody">
+            <EntityTypeMapping TypeName="MalinowskyCarRentalModel.Samochody">
+              <MappingFragment StoreEntitySet="Samochody">
+                <ScalarProperty Name="id_samochodu" ColumnName="id_samochodu" />
+                <ScalarProperty Name="id_typu" ColumnName="id_typu" />
+                <ScalarProperty Name="id_bazy" ColumnName="id_bazy" />
+                <ScalarProperty Name="id_stanu_samochodu" ColumnName="id_stanu_samochodu" />
+                <ScalarProperty Name="vin" ColumnName="vin" />
+                <ScalarProperty Name="przebieg" ColumnName="przebieg" />
+                <ScalarProperty Name="cena_za_dzien" ColumnName="cena_za_dzien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stany_samochodu">
+            <EntityTypeMapping TypeName="MalinowskyCarRentalModel.Stany_samochodu">
+              <MappingFragment StoreEntitySet="Stany samochodu">
+                <ScalarProperty Name="id_stanu_samochodu" ColumnName="id_stanu_samochodu" />
+                <ScalarProperty Name="stan_samochodu" ColumnName="stan_samochodu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Typy_nadwozia">
+            <EntityTypeMapping TypeName="MalinowskyCarRentalModel.Typy_nadwozia">
+              <MappingFragment StoreEntitySet="Typy nadwozia">
+                <ScalarProperty Name="id_typu_nadwozia" ColumnName="id_typu_nadwozia" />
+                <ScalarProperty Name="typ_nadwozia" ColumnName="typ_nadwozia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Typy_samochodow">
+            <EntityTypeMapping TypeName="MalinowskyCarRentalModel.Typy_samochodow">
+              <MappingFragment StoreEntitySet="Typy samochodow">
+                <ScalarProperty Name="id_typu" ColumnName="id_typu" />
+                <ScalarProperty Name="id_wersji" ColumnName="id_wersji" />
+                <ScalarProperty Name="rok_produkcji" ColumnName="rok_produkcji" />
+                <ScalarProperty Name="kolor" ColumnName="kolor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wersje_modeli">
+            <EntityTypeMapping TypeName="MalinowskyCarRentalModel.Wersje_modeli">
+              <MappingFragment StoreEntitySet="Wersje modeli">
+                <ScalarProperty Name="id_wersji" ColumnName="id_wersji" />
+                <ScalarProperty Name="id_modelu" ColumnName="id_modelu" />
+                <ScalarProperty Name="id_paliwa" ColumnName="id_paliwa" />
+                <ScalarProperty Name="id_typu_nadwozia" ColumnName="id_typu_nadwozia" />
+                <ScalarProperty Name="moc_kw" ColumnName="moc_kw" />
+                <ScalarProperty Name="pojemnosc_silnika" ColumnName="pojemnosc_silnika" />
+                <ScalarProperty Name="liczba_miejsc" ColumnName="liczba_miejsc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wypozyczenia">
+            <EntityTypeMapping TypeName="MalinowskyCarRentalModel.Wypozyczenia">
+              <MappingFragment StoreEntitySet="Wypozyczenia">
+                <ScalarProperty Name="id_wypozyczenia" ColumnName="id_wypozyczenia" />
+                <ScalarProperty Name="id_klienta" ColumnName="id_klienta" />
+                <ScalarProperty Name="id_pracownika" ColumnName="id_pracownika" />
+                <ScalarProperty Name="id_samochodu" ColumnName="id_samochodu" />
+                <ScalarProperty Name="data_wypozyczenia" ColumnName="data_wypozyczenia" />
+                <ScalarProperty Name="planowana_data_zwrotu" ColumnName="planowana_data_zwrotu" />
+                <ScalarProperty Name="data_zwrotu" ColumnName="data_zwrotu" />
+                <ScalarProperty Name="oplata_dodatkowa" ColumnName="oplata_dodatkowa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -4,9 +4,29 @@
              xmlns:local="clr-namespace:MalinowskyCarRental"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <Style x:Key="windowStyle" TargetType="Window">
+            <Setter Property="AllowsTransparency" Value="True" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="WindowStyle" Value="None" />
+        </Style>
+
+        <Style x:Key="windowOuterBorderStyle" TargetType="Border">
+            <Setter Property="BorderThickness" Value="20" />
+        </Style>
+
+        <Style x:Key="windowInnerBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="#f7f7f7" />
+            <Setter Property="CornerRadius" Value="25" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#000000" Opacity="0.4" BlurRadius="20" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
         <Style x:Key="sidebarButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="#eeeeee" />
+            <Setter Property="Foreground" Value="#f7f7f7" />
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Template">
                 <Setter.Value>
@@ -26,9 +46,85 @@
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="Foreground" Value="#eeeeee" />
+                    <Setter Property="Foreground" Value="#f7f7f7" />
                 </Trigger>
             </Style.Triggers>
+        </Style>
+
+        <Style x:Key="actionButton" TargetType="Button">
+            <Setter Property="Background" Value="#444444" />
+            <Setter Property="Foreground" Value="#f7f7f7" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                            <ContentPresenter Margin="16 6" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#222222" />
+                    <Setter Property="Foreground" Value="#ffffff" />
+                    <Setter Property="Cursor" Value="Hand" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#444444" />
+                    <Setter Property="Foreground" Value="#f7f7f7" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="dataGridStyle" TargetType="DataGrid">
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="EnableRowVirtualization" Value="True"/>
+            <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="BorderBrush" Value="#444444"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="CellStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#444444" />
+                                <Setter Property="Foreground" Value="#f3f3f3" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="header" TargetType="Label">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="viewHeader" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#444444"/>
+        </Style>
+
+        <Style x:Key="formLabel" TargetType="Label">
+            <Setter Property="Margin" Value="0 6"/>
+        </Style>
+
+        <Style x:Key="formFieldTextBox" TargetType="TextBox">
+            <Setter Property="Margin" Value="0 6"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        
+        <Style x:Key="formFieldDatePicker" TargetType="DatePicker">
+            <Setter Property="Margin" Value="0 6"/>
+            <Setter Property="FontSize" Value="14"/>
         </Style>
     </Application.Resources>
 </Application>

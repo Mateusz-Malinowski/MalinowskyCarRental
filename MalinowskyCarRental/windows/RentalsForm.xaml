@@ -1,11 +1,11 @@
-﻿<Window x:Class="MalinowskyCarRental.CustomerForm"
+﻿<Window x:Class="MalinowskyCarRental.RentalsForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MalinowskyCarRental"
         mc:Ignorable="d"
-        Title="CustomerForm" Height="450" Width="800"
+        Title="RentalsForm" Height="450" Width="800"
         WindowStartupLocation="CenterScreen" Loaded="Window_Loaded"
         Style="{StaticResource windowStyle}">
     <Border Style="{StaticResource windowOuterBorderStyle}" MouseDown="Border_MouseDown">
@@ -27,52 +27,43 @@
                     <Grid Grid.Column="0" Margin="0 0 25 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="180" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
 
-                        <Label Grid.Column="0" Grid.Row="0"  Content="pesel" Style="{StaticResource formLabel}"/>
-                        <TextBox Grid.Column="1" Grid.Row="0" x:Name="pesel" Style="{StaticResource formFieldTextBox}"/>
-                        <Label Grid.Column="0" Grid.Row="1" Content="imie" Style="{StaticResource formLabel}"/>
-                        <TextBox Grid.Column="1" Grid.Row="1" x:Name="imie" Style="{StaticResource formFieldTextBox}"/>
-                        <Label Grid.Column="0" Grid.Row="2" Content="nazwisko" Style="{StaticResource formLabel}"/>
-                        <TextBox Grid.Column="1" Grid.Row="2" x:Name="nazwisko" Style="{StaticResource formFieldTextBox}"/>
-                        <Label Grid.Column="0" Grid.Row="3" Content="data urodzenia" Style="{StaticResource formLabel}"/>
-                        <DatePicker Grid.Column="1" Grid.Row="3" x:Name="data_urodzenia" Style="{StaticResource formFieldDatePicker}"/>
-                        <Label Grid.Column="0" Grid.Row="4" Content="nr telefonu" Style="{StaticResource formLabel}"/>
-                        <TextBox Grid.Column="1" Grid.Row="4" x:Name="nr_telefonu" Style="{StaticResource formFieldTextBox}"/>
+                        <Label Grid.Column="0" Grid.Row="0"  Content="id klienta" Style="{StaticResource formLabel}"/>
+                        <ComboBox Grid.Column="1" Grid.Row="0" x:Name="id_klienta" Style="{StaticResource formFieldComboBox}"/>
+                        <Label Grid.Column="0" Grid.Row="1" Content="id pracownika" Style="{StaticResource formLabel}"/>
+                        <ComboBox Grid.Column="1" Grid.Row="1" x:Name="id_pracownika" Style="{StaticResource formFieldComboBox}"/>
+                        <Label Grid.Column="0" Grid.Row="2" Content="id samochodu" Style="{StaticResource formLabel}"/>
+                        <ComboBox Grid.Column="1" Grid.Row="2" x:Name="id_samochodu" Style="{StaticResource formFieldComboBox}"/>
                     </Grid>
 
 
                     <Grid Grid.Column="1" Margin="25 0 0 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="180" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
 
-                        <Label Grid.Column="0" Grid.Row="0"  Content="kraj" Style="{StaticResource formLabel}"/>
-                        <TextBox Grid.Column="1" Grid.Row="0" x:Name="kraj" Style="{StaticResource formFieldTextBox}"/>
-                        <Label Grid.Column="0" Grid.Row="1" Content="miasto" Style="{StaticResource formLabel}"/>
-                        <TextBox Grid.Column="1" Grid.Row="1" x:Name="miasto" Style="{StaticResource formFieldTextBox}"/>
-                        <Label Grid.Column="0" Grid.Row="2" Content="ulica" Style="{StaticResource formLabel}"/>
-                        <TextBox Grid.Column="1" Grid.Row="2" x:Name="ulica" Style="{StaticResource formFieldTextBox}"/>
-                        <Label Grid.Column="0" Grid.Row="3" Content="numer domu" Style="{StaticResource formLabel}"/>
-                        <TextBox Grid.Column="1" Grid.Row="3" x:Name="numer_domu" Style="{StaticResource formFieldTextBox}"/>
-                        <Label Grid.Column="0" Grid.Row="4" Content="numer lokalu" Style="{StaticResource formLabel}"/>
-                        <TextBox Grid.Column="1" Grid.Row="4" x:Name="numer_lokalu" Style="{StaticResource formFieldTextBox}"/>
+                        <Label Grid.Column="0" Grid.Row="0" Content="data wypożyczenia" Style="{StaticResource formLabel}"/>
+                        <DatePicker Grid.Column="1" Grid.Row="0" x:Name="data_wypozyczenia" Style="{StaticResource formFieldDatePicker}"/>
+                        <Label Grid.Column="0" Grid.Row="1" Content="planowana data zwrotu" Style="{StaticResource formLabel}"/>
+                        <DatePicker Grid.Column="1" Grid.Row="1" x:Name="planowana_data_zwrotu" Style="{StaticResource formFieldDatePicker}"/>
+                        <Label Grid.Column="0" Grid.Row="2" Content="data zwrotu" Style="{StaticResource formLabel}"/>
+                        <DatePicker Grid.Column="1" Grid.Row="2" x:Name="data_zwrotu" Style="{StaticResource formFieldDatePicker}"/>
+                        <Label Grid.Column="0" Grid.Row="3" Content="opłata dodatkowa" Style="{StaticResource formLabel}"/>
+                        <TextBox Grid.Column="1" Grid.Row="3" x:Name="oplata_dodatkowa" Style="{StaticResource formFieldTextBox}"/>
                     </Grid>
                 </Grid>
                 <StackPanel Grid.Row="2" Margin="25 0 25 25" HorizontalAlignment="Center" Orientation="Horizontal">

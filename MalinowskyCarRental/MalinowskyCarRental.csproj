@@ -67,11 +67,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CustomerForm.xaml.cs">
+    <Compile Include="views\RentalsView.xaml.cs">
+      <DependentUpon>RentalsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\CustomerForm.xaml.cs">
       <DependentUpon>CustomerForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bazy.cs">
       <DependentUpon>MalinowskyCarRental_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="views\CustomersView.xaml.cs">
+      <DependentUpon>CustomersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Klienci.cs">
       <DependentUpon>MalinowskyCarRental_model.tt</DependentUpon>
@@ -105,14 +111,25 @@
     <Compile Include="Wersje_modeli.cs">
       <DependentUpon>MalinowskyCarRental_model.tt</DependentUpon>
     </Compile>
+    <Compile Include="windows\RentalsForm.xaml.cs">
+      <DependentUpon>RentalsForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Wypozyczenia.cs">
       <DependentUpon>MalinowskyCarRental_model.tt</DependentUpon>
     </Compile>
-    <Page Include="CustomerForm.xaml">
+    <Page Include="views\RentalsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="windows\CustomerForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\CustomersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -120,10 +137,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="windows\RentalsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MalinowskyCarRental_model.Context.cs">

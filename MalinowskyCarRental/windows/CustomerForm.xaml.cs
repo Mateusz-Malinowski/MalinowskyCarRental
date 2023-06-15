@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.Migrations;
+﻿using System;
+using System.Data.Entity.Migrations;
 using System.Windows;
 using System.Windows.Input;
 
@@ -6,14 +7,14 @@ namespace MalinowskyCarRental
 {
     public partial class CustomerForm : Window
     {
-        private readonly Klienci customer;
         private readonly MalinowskyCarRentalEntities context;
+        private readonly Klienci customer;
 
         public CustomerForm(in MalinowskyCarRentalEntities context, in Klienci customer = null)
         {
             InitializeComponent();
-            this.customer = customer;
             this.context = context;
+            this.customer = customer;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -49,24 +50,34 @@ namespace MalinowskyCarRental
         private void ButtonCancel_Click(object sender, RoutedEventArgs e) => Close();
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            Klienci newCustomer = new Klienci()
+            try {
+                if (pesel.Text.Length != 11) throw new FormatException();
+
+                Klienci newCustomer = new Klienci()
+                {
+                    pesel = pesel.Text,
+                    imie = imie.Text,
+                    nazwisko = nazwisko.Text,
+                    data_urodzenia = data_urodzenia.SelectedDate,
+                    nr_telefonu = nr_telefonu.Text,
+                    kraj = kraj.Text,
+                    miasto = miasto.Text,
+                    ulica = ulica.Text,
+                    numer_domu = numer_domu.Text,
+                    numer_lokalu = numer_lokalu.Text,
+                };
+
+                if (customer != null) newCustomer.id_klienta = customer.id_klienta;
+
+                context.Klienci.AddOrUpdate(newCustomer);
+                context.SaveChanges();
+            }
+            catch
             {
-                pesel = pesel.Text,
-                imie = imie.Text,
-                nazwisko = nazwisko.Text,
-                data_urodzenia = data_urodzenia.SelectedDate,
-                nr_telefonu = nr_telefonu.Text,
-                kraj = kraj.Text,
-                miasto = miasto.Text,
-                ulica = ulica.Text,
-                numer_domu = numer_domu.Text,
-                numer_lokalu = numer_lokalu.Text,
-            };
-
-            if (customer != null) newCustomer.id_klienta = customer.id_klienta;
-
-            context.Klienci.AddOrUpdate(newCustomer);
-            context.SaveChanges();
+                MessageBox.Show("Nie udało się zapisać zmian. Nie podano wymaganego pola lub format był błędny.",
+                    "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             Close();
         }

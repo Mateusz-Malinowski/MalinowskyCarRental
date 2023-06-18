@@ -28,6 +28,7 @@ namespace MalinowskyCarRental
             carsViewSource.Source = context.Samochody.Local;
         }
 
+        /// <summary>Deletes selected car and all rentals associated with it.</summary>
         private void DeleteCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             const string messageText = "Czy jesteś pewny? Wszystkie wypożyczenia tego samochodu" +
@@ -53,6 +54,7 @@ namespace MalinowskyCarRental
             carsViewSource.View.Refresh();
         }
 
+        /// <summary>Opens cars form in "update mode".</summary>
         private void UpdateCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             CarsForm carsForm = new CarsForm(context, carsViewSource.View.CurrentItem as Samochody);
@@ -61,6 +63,7 @@ namespace MalinowskyCarRental
             carsViewSource.View.Refresh();
         }
 
+        /// <summary>Opens cars form in "add mode".</summary>
         private void AddCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             CarsForm carsForm = new CarsForm(context);

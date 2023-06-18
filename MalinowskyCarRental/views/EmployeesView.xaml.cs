@@ -29,6 +29,7 @@ namespace MalinowskyCarRental
             employeesViewSource.Source = context.Pracownicy.Local;
         }
 
+        /// <summary>Deletes selected employee and all rentals associated with it.</summary>
         private void DeleteCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             const string messageText = "Czy jesteś pewny? Wszystkie wypożyczenia przypisane do tego pracownika" +
@@ -54,6 +55,7 @@ namespace MalinowskyCarRental
             employeesViewSource.View.Refresh();
         }
 
+        /// <summary>Opens employees form in "update mode".</summary>
         private void UpdateCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             EmployeesForm employeesForm = new EmployeesForm(context, employeesViewSource.View.CurrentItem as Pracownicy);
@@ -62,6 +64,7 @@ namespace MalinowskyCarRental
             employeesViewSource.View.Refresh();
         }
 
+        /// <summary>Opens employees form in "add mode".</summary>
         private void AddCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             EmployeesForm employeesForm = new EmployeesForm(context);

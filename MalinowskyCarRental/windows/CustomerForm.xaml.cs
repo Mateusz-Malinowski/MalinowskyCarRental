@@ -10,6 +10,12 @@ namespace MalinowskyCarRental
         private readonly MalinowskyCarRentalEntities context;
         private readonly Klienci customer;
 
+        /// <summary>
+        /// Creates new customers form window.
+        /// </summary>
+        /// <param name="customer">
+        /// if provided, form will update the <paramref name="customer"/> instead of adding new one
+        /// </param>
         public CustomerForm(in MalinowskyCarRentalEntities context, in Klienci customer = null)
         {
             InitializeComponent();
@@ -17,6 +23,9 @@ namespace MalinowskyCarRental
             this.customer = customer;
         }
 
+        /// <summary>
+        /// Fires when window is loaded. Prefills data from customer if it was provided.
+        /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             if (customer != null)
@@ -48,6 +57,10 @@ namespace MalinowskyCarRental
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e) => Close();
+
+        /// <summary>
+        /// Fires when "Add" or "Update" button was clicked. Adds or updates the customer.
+        /// </summary>
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             try {

@@ -28,6 +28,7 @@ namespace MalinowskyCarRental
             rentalsViewSource.Source = context.Wypozyczenia.Local;
         }
 
+        /// <summary>Deletes selected rental.</summary>
         private void DeleteCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             const string messageText = "Czy jesteś pewny, że chcesz usunąć dane o tym wypożyczeniu?";
@@ -43,6 +44,7 @@ namespace MalinowskyCarRental
             rentalsViewSource.View.Refresh();
         }
 
+        /// <summary>Opens rentals form in "update mode".</summary>
         private void UpdateCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             RentalsForm rentalsForm = new RentalsForm(context, rentalsViewSource.View.CurrentItem as Wypozyczenia);
@@ -51,6 +53,7 @@ namespace MalinowskyCarRental
             rentalsViewSource.View.Refresh();
         }
 
+        /// <summary>Opens rentals form in "add mode".</summary>
         private void AddCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             RentalsForm rentalsForm = new RentalsForm(context);

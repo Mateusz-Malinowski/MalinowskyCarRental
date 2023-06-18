@@ -12,6 +12,12 @@ namespace MalinowskyCarRental
         private readonly MalinowskyCarRentalEntities context;
         private readonly Samochody car;
 
+        /// <summary>
+        /// Creates new cars form window.
+        /// </summary>
+        /// <param name="car">
+        /// if provided, form will update the <paramref name="car"/> instead of adding new one
+        /// </param>
         public CarsForm(in MalinowskyCarRentalEntities context, in Samochody car = null)
         {
             InitializeComponent();
@@ -19,6 +25,9 @@ namespace MalinowskyCarRental
             this.context = context;
         }
 
+        /// <summary>
+        /// Fires when window is loaded. Prefills data from car if it was provided.
+        /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             context.Typy_samochodow.Load();
@@ -54,6 +63,10 @@ namespace MalinowskyCarRental
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e) => Close();
+
+        /// <summary>
+        /// Fires when "Add" or "Update" button was clicked. Adds or updates the car.
+        /// </summary>
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             Samochody newCar;

@@ -12,6 +12,12 @@ namespace MalinowskyCarRental
         private readonly MalinowskyCarRentalEntities context;
         private readonly Wypozyczenia rental;
 
+        /// <summary>
+        /// Creates new rentals form window.
+        /// </summary>
+        /// <param name="rental">
+        /// if provided, form will update the <paramref name="rental"/> instead of adding new one
+        /// </param>
         public RentalsForm(in MalinowskyCarRentalEntities context, in Wypozyczenia rental = null)
         {
             InitializeComponent();
@@ -19,6 +25,9 @@ namespace MalinowskyCarRental
             this.context = context;
         }
 
+        /// <summary>
+        /// Fires when window is loaded. Prefills data from rental if it was provided.
+        /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             context.Klienci.Load();
@@ -55,6 +64,10 @@ namespace MalinowskyCarRental
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e) => Close();
+
+        /// <summary>
+        /// Fires when "Add" or "Update" button was clicked. Adds or updates the rental.
+        /// </summary>
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             Wypozyczenia newRental;

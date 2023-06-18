@@ -28,6 +28,7 @@ namespace MalinowskyCarRental
             customersViewSource.Source = context.Klienci.Local;
         }
 
+        /// <summary>Deletes selected customer and all rentals associated with it.</summary>
         private void DeleteCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             const string messageText = "Czy jesteś pewny? Wszystkie wypożyczenia tego klienta także zostaną usunięte.";
@@ -52,6 +53,7 @@ namespace MalinowskyCarRental
             customersViewSource.View.Refresh();
         }
 
+        /// <summary>Opens customers form in "update mode".</summary>
         private void UpdateCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             CustomerForm customerForm = new CustomerForm(context, customersViewSource.View.CurrentItem as Klienci);
@@ -60,6 +62,7 @@ namespace MalinowskyCarRental
             customersViewSource.View.Refresh();
         }
 
+        /// <summary>Opens customers form in "add mode".</summary>
         private void AddCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             CustomerForm customerForm = new CustomerForm(context);

@@ -1,9 +1,5 @@
 ﻿using System.Windows;
-using System.Windows.Data;
 using System.Windows.Input;
-using System.Data.Entity;
-using System.Linq;
-using System;
 
 namespace MalinowskyCarRental
 {
@@ -13,6 +9,7 @@ namespace MalinowskyCarRental
 
         private CustomersView customersView;
         private RentalsView rentalsView;
+        private EmployeesView employeesView;
 
         public MainWindow()
         {
@@ -59,6 +56,12 @@ namespace MalinowskyCarRental
         {
             if (rentalsView == null) rentalsView = new RentalsView(this, context);
             contentControl.Content = rentalsView;
+        }
+
+        private void ButtonEmployees_Click(object sender, RoutedEventArgs e)
+        {
+            if (employeesView == null) employeesView = new EmployeesView(this, context);
+            contentControl.Content = employeesView;
         }
     }
 }

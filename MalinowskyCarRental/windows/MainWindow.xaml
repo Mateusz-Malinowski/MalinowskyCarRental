@@ -38,6 +38,9 @@
                                 <Button Style="{StaticResource sidebarButton}" Margin="15 15 15 0" Click="ButtonRentals_Click">
                                     <TextBlock Text="Wypożyczenia" />
                                 </Button>
+                                <Button Style="{StaticResource sidebarButton}" Margin="15 15 15 0" Click="ButtonEmployees_Click">
+                                    <TextBlock Text="Pracownicy" />
+                                </Button>
                                 <Button Style="{StaticResource sidebarButton}" Margin="15 15 15 0">
                                     <TextBlock Text="Samochody" />
                                 </Button>

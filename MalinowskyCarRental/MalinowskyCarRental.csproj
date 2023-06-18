@@ -67,8 +67,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="views\EmployeesView.xaml.cs">
+      <DependentUpon>EmployeesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\RentalsView.xaml.cs">
       <DependentUpon>RentalsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\EmployeesForm.xaml.cs">
+      <DependentUpon>EmployeesForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\CustomerForm.xaml.cs">
       <DependentUpon>CustomerForm.xaml</DependentUpon>
@@ -117,9 +123,17 @@
     <Compile Include="Wypozyczenia.cs">
       <DependentUpon>MalinowskyCarRental_model.tt</DependentUpon>
     </Compile>
+    <Page Include="views\EmployeesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="views\RentalsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\EmployeesForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="windows\CustomerForm.xaml">
       <SubType>Designer</SubType>

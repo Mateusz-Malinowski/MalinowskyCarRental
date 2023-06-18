@@ -53,7 +53,7 @@ values
 insert into Bazy(id_pracownika, kraj, miasto, ulica, numer_domu, numer_lokalu)
 values
     (1, 'Polska', 'Katowice', 'Pawia', '2', null),
-    (2, 'Niemcy', 'Berlin', 'Köpenicker', '15', null),
+    (2, 'Niemcy', 'Berlin', 'Köpenicker', '15', null)
 ;
 
 update Pracownicy set id_bazy = 1; -- ka¿dy pracownik do jednej bazy, bo nie ma innych baz

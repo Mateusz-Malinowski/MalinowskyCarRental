@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="MalinowskyCarRental.EmployeesView"
+﻿<UserControl x:Class="MalinowskyCarRental.CarsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <UserControl.Resources>
-        <CollectionViewSource x:Key="employeesViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Pracownicy}}"/>
+        <CollectionViewSource x:Key="carsViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Samochody}}"/>
         <RoutedUICommand x:Key="deleteCommand" Text="Usuń"/>
         <RoutedUICommand x:Key="updateCommand" Text="Edytuj"/>
         <RoutedUICommand x:Key="addCommand" Text="Dodaj"/>
@@ -24,30 +24,22 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Margin="50 50 50 0" Style="{StaticResource viewHeader}" Text="Pracownicy"/>
+        <TextBlock Grid.Row="0" Margin="50 50 50 0" Style="{StaticResource viewHeader}" Text="Samochody"/>
 
         <DataGrid Grid.Row="1"
-                  DataContext="{StaticResource employeesViewSource}"
+                  DataContext="{StaticResource carsViewSource}"
                   ItemsSource="{Binding}"
                   Style="{StaticResource dataGridStyle}"
                   HorizontalAlignment="Stretch"
                   Margin="50">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding id_pracownika}" Header="id pracownika" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding id_bazy}" Header="id bazy" Width="*"/>
-                <DataGridTextColumn Binding="{Binding imie}" Header="imie" Width="*"/>
-                <DataGridTextColumn Binding="{Binding nazwisko}" Header="nazwisko" Width="*"/>
-                <DataGridTextColumn Binding="{Binding pesel}" Header="pesel" Width="*"/>
-                <DataGridTextColumn Binding="{Binding nr_telefonu}" Header="nr telefonu" Width="*"/>
-                <DataGridTextColumn Binding="{Binding stanowisko}" Header="stanowisko" Width="*"/>
-                <DataGridTextColumn Binding="{Binding stawka_godzinowa}" Header="stawka godzinowa" Width="*"/>
-                <DataGridTextColumn Binding="{Binding kraj}" Header="kraj" Width="*"/>
-                <DataGridTextColumn Binding="{Binding miasto}" Header="miasto" Width="*"/>
-                <DataGridTextColumn Binding="{Binding ulica}" Header="ulica" Width="*"/>
-                <DataGridTextColumn Binding="{Binding numer_domu}" Header="numer domu" Width="*"/>
-                <DataGridTextColumn Binding="{Binding numer_lokalu}" Header="numer lokalu" Width="*"/>
-                <DataGridTextColumn Binding="{Binding data_zatrudnienia}" Header="data zatrudnienia" Width="*"/>
-                <DataGridTextColumn Binding="{Binding data_urodzenia}" Header="data urodzenia" Width="*"/>
+                <DataGridTextColumn Binding="{Binding id_samochodu}" Header="id samochodu" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding id_typu}" Header="id typu" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding id_bazy}" Header="id bazy" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding id_stanu_samochodu}" Header="id stanu samochodu" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding vin}" Header="vin" Width="*"/>
+                <DataGridTextColumn Binding="{Binding przebieg}" Header="przebieg" Width="*"/>
+                <DataGridTextColumn Binding="{Binding cena_za_dzien}" Header="cena za dzien" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 

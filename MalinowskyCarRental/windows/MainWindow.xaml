@@ -41,7 +41,7 @@
                                 <Button Style="{StaticResource sidebarButton}" Margin="15 15 15 0" Click="ButtonEmployees_Click">
                                     <TextBlock Text="Pracownicy" />
                                 </Button>
-                                <Button Style="{StaticResource sidebarButton}" Margin="15 15 15 0">
+                                <Button Style="{StaticResource sidebarButton}" Margin="15 15 15 0" Click="ButtonCars_Click">
                                     <TextBlock Text="Samochody" />
                                 </Button>
                             </StackPanel>

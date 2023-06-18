@@ -10,6 +10,7 @@ namespace MalinowskyCarRental
         private CustomersView customersView;
         private RentalsView rentalsView;
         private EmployeesView employeesView;
+        private CarsView carsView;
 
         public MainWindow()
         {
@@ -62,6 +63,12 @@ namespace MalinowskyCarRental
         {
             if (employeesView == null) employeesView = new EmployeesView(this, context);
             contentControl.Content = employeesView;
+        }
+
+        private void ButtonCars_Click(object sender, RoutedEventArgs e)
+        {
+            if (carsView == null) carsView = new CarsView(this, context);
+            contentControl.Content = carsView;
         }
     }
 }

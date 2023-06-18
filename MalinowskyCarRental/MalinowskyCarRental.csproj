@@ -70,6 +70,9 @@
     <Compile Include="views\EmployeesView.xaml.cs">
       <DependentUpon>EmployeesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="views\CarsView.xaml.cs">
+      <DependentUpon>CarsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\RentalsView.xaml.cs">
       <DependentUpon>RentalsView.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,9 @@
     <Compile Include="Wersje_modeli.cs">
       <DependentUpon>MalinowskyCarRental_model.tt</DependentUpon>
     </Compile>
+    <Compile Include="windows\CarsForm.xaml.cs">
+      <DependentUpon>CarsForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\RentalsForm.xaml.cs">
       <DependentUpon>RentalsForm.xaml</DependentUpon>
     </Compile>
@@ -124,6 +130,10 @@
       <DependentUpon>MalinowskyCarRental_model.tt</DependentUpon>
     </Compile>
     <Page Include="views\EmployeesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="views\CarsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -155,6 +165,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="windows\CarsForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="windows\RentalsForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
